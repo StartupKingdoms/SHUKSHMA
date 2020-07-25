@@ -16,3 +16,12 @@ const EXCEPTION_TYPES = [BadRequestException,
 ]; 
 
 export {EXCEPTION_TYPES} ;
+export {
+    BadRequestException,
+    ForbiddenException,
+    InternalServerException,
+    InvalidCredentialException,
+    NotFoundException,
+    RepositoryException,
+    PaymentFailedException
+}
