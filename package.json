@@ -4,7 +4,6 @@
   "description": "An Enterprise Microservice framework based on nodejs + typescript , abstracted on Domain Driven Design(DDD) and clean architecture",
   "main": "lib/index.js",
   "scripts": {
-    "prepublish": "tsc",
     "test": "test",
     "build": "tsc -p ."
   },
@@ -25,9 +24,9 @@
     "architecture"
   ],
   "files": [
-    "dist"
+    "lib"
   ],
-  "types": "dist/index.d.ts",
+  "types": "lib/index.d.ts",
   "author": "Mayur Tikundi",
   "license": "GPL-3.0-or-later",
   "bugs": {
