@@ -1,6 +1,6 @@
 {
   "name": "shukshma",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "An Enterprise Microservice framework based on nodejs + typescript , abstracted on Domain Driven Design(DDD) and clean architecture",
   "main": "dist/index.js",
   "scripts": {
@@ -11,7 +11,9 @@
     "type": "git",
     "url": "git+https://github.com/mayurtikundi12/SHUKSHMA.git"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "Enterprise",
     "Microservice",
