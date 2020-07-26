@@ -1,6 +1,6 @@
 {
   "name": "shukshma",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "An Enterprise Microservice framework based on nodejs + typescript , abstracted on Domain Driven Design(DDD) and clean architecture",
   "main": "dist/index.js",
   "scripts": {
