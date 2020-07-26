@@ -1,8 +1,8 @@
 {
   "name": "shukshma",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "An Enterprise Microservice framework based on nodejs + typescript , abstracted on Domain Driven Design(DDD) and clean architecture",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "test",
     "build": "tsc -p ."
@@ -11,6 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/mayurtikundi12/SHUKSHMA.git"
   },
+  "files": ["dist"],
   "keywords": [
     "Enterprise",
     "Microservice",
@@ -23,10 +24,7 @@
     "clean",
     "architecture"
   ],
-  "files": [
-    "lib"
-  ],
-  "types": "lib/index.d.ts",
+  "types": "dist/index.d.ts",
   "author": "Mayur Tikundi",
   "license": "GPL-3.0-or-later",
   "bugs": {
@@ -44,7 +42,6 @@
   },
   "devDependencies": {
     "@types/bunyan": "^1.8.6",
-    "@types/winston": "^2.4.4",
-    "typescript": "^3.9.7"
+    "@types/winston": "^2.4.4"
   }
 }
