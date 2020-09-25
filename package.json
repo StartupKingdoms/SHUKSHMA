@@ -1,6 +1,6 @@
 {
   "name": "shukshma",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "An Enterprise Microservice framework based on nodejs + typescript , abstracted on Domain Driven Design(DDD) and clean architecture",
   "main": "dist/index.js",
   "scripts": {
@@ -40,8 +40,15 @@
     "inversify-express-utils": "^6.3.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.25",
-    "redis": "^3.0.2"
+    "redis": "^3.0.2",
+    "swagger-ui-dist": "^3.34.0"
   },
+  "peerDependencies": {
+    "swagger-ui-dist": "^3.34.0"
+  },
+  "bundleDependencies": [
+    "swagger-ui-dist"
+  ],
   "devDependencies": {
     "@types/bunyan": "^1.8.6",
     "@types/winston": "^2.4.4"

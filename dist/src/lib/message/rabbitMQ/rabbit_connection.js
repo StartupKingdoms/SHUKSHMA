@@ -38,14 +38,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RabbitConnection = void 0;
 var amqplib_1 = require("amqplib");
-var ioc_container_1 = require("../../IOC/ioc_container");
-var types_1 = require("../../types");
 var RabbitConnection = /** @class */ (function () {
-    function RabbitConnection() {
+    function RabbitConnection(connection_url) {
         var _this = this;
-        this.logger = ioc_container_1.IocContainer.get_ioc_container().get(types_1.DEFUALT_TYPES.LOG);
         if (!RabbitConnection.channel) {
-            this.createConnection().then(function (connection) { return __awaiter(_this, void 0, void 0, function () {
+            this.createConnection(connection_url).then(function (connection) { return __awaiter(_this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0: return [4 /*yield*/, this.createDefaultChannel(connection)];
@@ -59,22 +56,25 @@ var RabbitConnection = /** @class */ (function () {
                 console.log("handled rabbit connection error ", error);
             });
         }
+        else {
+            console.log("Channel already exists");
+        }
     }
-    RabbitConnection.prototype.createConnection = function () {
+    RabbitConnection.prototype.createConnection = function (connection_url) {
         return __awaiter(this, void 0, void 0, function () {
             var connection, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, amqplib_1.connect("amqp://localhost:5672")];
+                        return [4 /*yield*/, amqplib_1.connect(connection_url)];
                     case 1:
                         connection = _a.sent();
-                        return [2 /*return*/, Promise.resolve(connection)];
+                        return [2 /*return*/, connection];
                     case 2:
                         error_1 = _a.sent();
                         // Handle error here **@mayur_tikundi
-                        console.log("error connecting ");
+                        console.log("error connecting to Rabbitmq ", error_1);
                         return [2 /*return*/, Promise.reject(error_1)];
                     case 3: return [2 /*return*/];
                 }
@@ -102,12 +102,12 @@ var RabbitConnection = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!!RabbitConnection.channel.checkQueue(queueName)) return [3 /*break*/, 2];
-                        return [4 /*yield*/, RabbitConnection.channel.assertQueue(queueName)];
+                        if (!this.channel) return [3 /*break*/, 2];
+                        return [4 /*yield*/, this.channel.assertQueue(queueName)];
                     case 1:
                         _a.sent();
-                        _a.label = 2;
-                    case 2: return [2 /*return*/];
+                        return [2 /*return*/, true];
+                    case 2: return [2 /*return*/, false];
                 }
             });
         });
@@ -116,19 +116,26 @@ var RabbitConnection = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, RabbitConnection.channel.sendToQueue(queueName, Buffer.from(JSON.stringify(message)))];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/];
+                    case 0: return [4 /*yield*/, this.channel.sendToQueue(queueName, Buffer.from(JSON.stringify(message)))];
+                    case 1: return [2 /*return*/, _a.sent()];
                 }
             });
         });
     };
     RabbitConnection.consumeQueue = function (queueName, callback) {
-        RabbitConnection.channel.consume(queueName, callback);
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, this.channel.consume(queueName, callback)];
+            });
+        });
     };
     RabbitConnection.acknowledgeMessage = function (message) {
-        RabbitConnection.channel.ack(message);
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                // await RabbitConnection.channel.ack(message);
+                return [2 /*return*/, true];
+            });
+        });
     };
     return RabbitConnection;
 }());
