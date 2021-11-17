@@ -13,6 +13,4 @@ import { BunyanLogger } from '../log/bunyan_logger';
 
 
 let ioc_container:Container = IocContainer.get_ioc_container();
-
-// 
 ioc_container.bind<Log>(DEFUALT_TYPES.LOG).to(WinstonLogger)

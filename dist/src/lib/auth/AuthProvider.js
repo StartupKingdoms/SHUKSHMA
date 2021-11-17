@@ -45,7 +45,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthProvider = void 0;
 var inversify_1 = require("inversify");
 var ioc_container_1 = require("../IOC/ioc_container");
-var authService = inversify_1.inject("AuthService");
+var authService = (0, inversify_1.inject)("AuthService");
 var AuthProvider = /** @class */ (function () {
     function AuthProvider() {
         this._authService = ioc_container_1.IocContainer.get_ioc_container().get(Symbol.for("AuthService"));
@@ -67,7 +67,7 @@ var AuthProvider = /** @class */ (function () {
         });
     };
     AuthProvider = __decorate([
-        inversify_1.injectable()
+        (0, inversify_1.injectable)()
     ], AuthProvider);
     return AuthProvider;
 }());

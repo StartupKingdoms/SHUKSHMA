@@ -7,5 +7,5 @@ export declare class Response extends BaseHttpController {
     private responseHeaders;
     private status_code;
     constructor(status_code: STATUS_CODE, responseContent: object, headerContent?: OutgoingHttpHeaders);
-    sendReponse(): import("inversify-express-utils/dts/results").JsonResult;
+    sendReponse(): import("inversify-express-utils/lib/results").JsonResult;
 }

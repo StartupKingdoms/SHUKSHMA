@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MongoConnection = void 0;
 var mongoose = require("mongoose");
+// import {connect} from 'mongoose';
 var MongoConnection = /** @class */ (function () {
     function MongoConnection(url, config) {
         // this.url = 'mongodb://ds013559.mlab.com:13559/courseman-test';
@@ -11,11 +12,7 @@ var MongoConnection = /** @class */ (function () {
         }
     }
     MongoConnection.prototype.createConnection = function (url, config) {
-        mongoose.connect(url, config).catch(function (error) {
-            // HANDLE ERROR HERE 
-            console.log(error);
-            // process.exit(0);
-        });
+        mongoose.connect(url, config);
         MongoConnection.db = mongoose.connection;
         MongoConnection.db.on('error', function (error) {
             console.log('connection error for mongodb:', error.message);

@@ -1,11 +1,11 @@
 {
   "name": "shukshma",
-  "version": "1.0.8",
+  "version": "1.0.10",
   "description": "An Enterprise Microservice framework based on nodejs + typescript , abstracted on Domain Driven Design(DDD) and clean architecture",
   "main": "dist/index.js",
   "scripts": {
     "test": "test",
-    "build": "tsc -p ."
+    "build": "rm -rf dist/ && tsc -p ."
   },
   "repository": {
     "type": "git",
@@ -34,14 +34,14 @@
   },
   "homepage": "https://github.com/mayurtikundi12/SHUKSHMA#readme",
   "dependencies": {
-    "amqplib": "^0.6.0",
+    "amqplib": "^0.8.0",
     "bunyan": "^1.8.14",
-    "inversify": "^5.0.1",
-    "inversify-express-utils": "^6.3.2",
+    "inversify": "^6.0.1",
+    "inversify-express-utils": "^6.4.3",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.25",
+    "mongoose": "^6.0.13",
     "redis": "^3.0.2",
-    "swagger-ui-dist": "^3.34.0"
+    "swagger-ui-dist": "^4.1.0"
   },
   "peerDependencies": {
     "swagger-ui-dist": "^3.34.0"
@@ -50,7 +50,7 @@
     "swagger-ui-dist"
   ],
   "devDependencies": {
-    "@types/bunyan": "^1.8.6",
+    "@types/bunyan": "^1.8.8",
     "@types/winston": "^2.4.4"
   }
 }

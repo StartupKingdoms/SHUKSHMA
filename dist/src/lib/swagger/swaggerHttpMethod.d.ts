@@ -5,14 +5,16 @@ interface PathOptions {
     tag: string;
     summary: string;
     description: string;
-    parameters: [{
-        in: String;
-        required: boolean;
-        schema: {
-            type: "object";
-            properties: object;
-        };
-    }];
+    parameters: [
+        {
+            in: String;
+            required: boolean;
+            schema: {
+                type: "object";
+                properties: object;
+            };
+        }
+    ];
     responses: object;
 }
 export declare function SwaggerHttpMethod(options: PathOptions): (target: Object, propertyKey: string, descriptor: PropertyDescriptor) => void;

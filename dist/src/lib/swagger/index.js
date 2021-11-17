@@ -39,8 +39,8 @@ var generateHTML = function (swaggerDoc, opts, options, customCss, customfavIcon
     var favIconString = customfavIcon ? '<link rel="icon" href="' + customfavIcon + '" />' : favIconHtml;
     var htmlWithCustomCss = _htmlTplString.toString().replace('<% customCss %>', customCss);
     var htmlWithFavIcon = htmlWithCustomCss.replace('<% favIconString %>', favIconString);
-    var htmlWithCustomJs = htmlWithFavIcon.replace('<% customJs %>', customJs ? "<script src=\"" + customJs + "\"></script>" : '');
-    var htmlWithCustomCssUrl = htmlWithCustomJs.replace('<% customCssUrl %>', customCssUrl ? "<link href=\"" + customCssUrl + "\" rel=\"stylesheet\">" : '');
+    var htmlWithCustomJs = htmlWithFavIcon.replace('<% customJs %>', customJs ? "<script src=\"".concat(customJs, "\"></script>") : '');
+    var htmlWithCustomCssUrl = htmlWithCustomJs.replace('<% customCssUrl %>', customCssUrl ? "<link href=\"".concat(customCssUrl, "\" rel=\"stylesheet\">") : '');
     var initOptions = {
         swaggerDoc: swaggerDoc || undefined,
         customOptions: options,
@@ -93,7 +93,7 @@ var swaggerInitFunction = function (swaggerDoc, opts) {
 var swaggerAssetMiddleware = function (options) {
     var opts = options || {};
     opts.index = false;
-    return express.static(swagger_ui_dist_1.getAbsoluteFSPath(), opts);
+    return express.static((0, swagger_ui_dist_1.getAbsoluteFSPath)(), opts);
 };
 var serveFiles = function (swaggerDoc, opts) {
     opts = opts || {};
@@ -160,12 +160,12 @@ var swagger_base = {
 var swaggerFilePath = __dirname + "/swagger.json";
 function GetSwaggerDoc() {
     var swaggerDocument = null;
-    if (fs_1.existsSync(swaggerFilePath)) {
-        var raw_swagger_data = fs_1.readFileSync(swaggerFilePath);
+    if ((0, fs_1.existsSync)(swaggerFilePath)) {
+        var raw_swagger_data = (0, fs_1.readFileSync)(swaggerFilePath);
         swaggerDocument = JSON.parse(raw_swagger_data.toString());
     }
     else {
-        fs_1.writeFileSync(swaggerFilePath, JSON.stringify(swagger_base));
+        (0, fs_1.writeFileSync)(swaggerFilePath, JSON.stringify(swagger_base));
         swaggerDocument = swagger_base;
     }
     return swaggerDocument;

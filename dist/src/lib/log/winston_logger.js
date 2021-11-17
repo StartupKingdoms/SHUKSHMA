@@ -15,7 +15,7 @@ var inversify_1 = require("inversify");
 var WinstonLogger = /** @class */ (function () {
     function WinstonLogger() {
         if (!this.logger) {
-            this.logger = winston_1.createLogger({
+            this.logger = (0, winston_1.createLogger)({
                 format: winston_1.format.combine(winston_1.format.colorize(), winston_1.format.timestamp(), winston_1.format.prettyPrint()),
                 defaultMeta: { service: 'user-service' },
                 transports: [
@@ -50,7 +50,7 @@ var WinstonLogger = /** @class */ (function () {
     };
     var WinstonLogger_1;
     WinstonLogger = WinstonLogger_1 = __decorate([
-        inversify_1.injectable(),
+        (0, inversify_1.injectable)(),
         __metadata("design:paramtypes", [])
     ], WinstonLogger);
     return WinstonLogger;

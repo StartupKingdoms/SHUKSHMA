@@ -67,7 +67,7 @@ var RabbitConnection = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, amqplib_1.connect(connection_url)];
+                        return [4 /*yield*/, (0, amqplib_1.connect)(connection_url)];
                     case 1:
                         connection = _a.sent();
                         return [2 /*return*/, connection];

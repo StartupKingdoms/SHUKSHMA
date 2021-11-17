@@ -1,14 +1,14 @@
 // Mostly from http://codingsans.com/blog/mongoose-models-using-typescript-classes
 
 import * as mongoose from 'mongoose';
-import {connect} from 'mongoose';
+// import {connect} from 'mongoose';
 
 export class MongoConnection {
 
     // private url:string // later change this to take from config
 
     static db:mongoose.Connection;
-    constructor(url:string , config:mongoose.ConnectionOptions) {
+    constructor(url:string , config:mongoose.ConnectOptions) {
         // this.url = 'mongodb://ds013559.mlab.com:13559/courseman-test';
         if (!MongoConnection.db) {
            this.createConnection(url,config); 
@@ -19,12 +19,7 @@ export class MongoConnection {
     
     public createConnection(url,config):mongoose.Connection{
         
-        mongoose.connect(url,config).catch(error=>{
-            // HANDLE ERROR HERE 
-            console.log(error);
-            
-            // process.exit(0);
-        });
+        mongoose.connect(url,config);
        
         MongoConnection.db = mongoose.connection ;
 

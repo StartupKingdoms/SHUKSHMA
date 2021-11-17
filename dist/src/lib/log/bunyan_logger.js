@@ -15,7 +15,7 @@ var inversify_1 = require("inversify");
 var BunyanLogger = /** @class */ (function () {
     function BunyanLogger() {
         if (!this.logger) {
-            this.logger = bunyan_1.createLogger({
+            this.logger = (0, bunyan_1.createLogger)({
                 name: "user_service",
                 serializers: bunyan_1.stdSerializers
             });
@@ -42,7 +42,7 @@ var BunyanLogger = /** @class */ (function () {
     };
     var BunyanLogger_1;
     BunyanLogger = BunyanLogger_1 = __decorate([
-        inversify_1.injectable(),
+        (0, inversify_1.injectable)(),
         __metadata("design:paramtypes", [])
     ], BunyanLogger);
     return BunyanLogger;

@@ -42,7 +42,7 @@ var util_1 = require("util");
 var Caching = /** @class */ (function () {
     // private setAsync ;
     function Caching() {
-        this.getAsync = util_1.promisify(redis_connection_1.RedisConnection.cacheStore.get).bind(redis_connection_1.RedisConnection.cacheStore);
+        this.getAsync = (0, util_1.promisify)(redis_connection_1.RedisConnection.cacheStore.get).bind(redis_connection_1.RedisConnection.cacheStore);
         // this.setAsync = promisify(RedisConnection.cacheStore.set).bind(RedisConnection.cacheStore);
     }
     Caching.prototype.set = function (key, value) {

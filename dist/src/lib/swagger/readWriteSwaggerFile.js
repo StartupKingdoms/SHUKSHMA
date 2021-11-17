@@ -7,15 +7,15 @@ var SwaggerFileIO = /** @class */ (function () {
         this.swaggerFilePath = __dirname + "/swagger.json";
     }
     SwaggerFileIO.prototype.readSwaggerFile = function () {
-        if (fs_1.existsSync(this.swaggerFilePath)) {
-            var raw_swagger_data = fs_1.readFileSync(this.swaggerFilePath);
+        if ((0, fs_1.existsSync)(this.swaggerFilePath)) {
+            var raw_swagger_data = (0, fs_1.readFileSync)(this.swaggerFilePath);
             return JSON.parse(raw_swagger_data.toString());
         }
         return null;
     };
     SwaggerFileIO.prototype.writeToSwaggerFile = function (newJson) {
         try {
-            fs_1.writeFileSync(this.swaggerFilePath, JSON.stringify(newJson));
+            (0, fs_1.writeFileSync)(this.swaggerFilePath, JSON.stringify(newJson));
             return true;
         }
         catch (error) {

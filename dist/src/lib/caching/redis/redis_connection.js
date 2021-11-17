@@ -9,7 +9,7 @@ var RedisConnection = /** @class */ (function () {
         }
     }
     RedisConnection.prototype.createConnection = function (config) {
-        RedisConnection.cacheStore = redis_1.createClient(config);
+        RedisConnection.cacheStore = (0, redis_1.createClient)(config);
         RedisConnection.cacheStore.on('error', function (error) {
             // console.log('connection error for redis:',error.message)
         });
