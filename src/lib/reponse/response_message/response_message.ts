@@ -32,5 +32,9 @@ export enum RESPONSE_MESSAGE {
 
 	PAYMENT_ERROR = "Payment Unsuccesfull",
 
-	UNCAUGHT_ERROR = "Uncaught Error"
+	UNCAUGHT_ERROR = "Uncaught Error",
+
+	FORBIDDEN = "Access forbidden",
+
+	NOT_ALLOWED = "METHOD_NOT_ALLOWED"
 };

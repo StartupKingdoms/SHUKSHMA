@@ -15,3 +15,6 @@ export {SwaggerHttpMethod} from './src/lib/swagger/swaggerHttpMethod';
 export {ApiPath} from './src/lib/swagger/apiPath';
 export {serve,setup} from './src/lib/swagger/index'
 export {MethodTypes} from './src/lib/swagger/swagger_http_types';
+
+// API validations and Documentation
+export {validator} from './src/lib/apiValidators'
