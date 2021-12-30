@@ -15,5 +15,7 @@ export declare enum RESPONSE_MESSAGE {
     REPOSITORY_ERROR = "Repository error",
     BAD_REQUEST = "Bad Request",
     PAYMENT_ERROR = "Payment Unsuccesfull",
-    UNCAUGHT_ERROR = "Uncaught Error"
+    UNCAUGHT_ERROR = "Uncaught Error",
+    FORBIDDEN = "Access forbidden",
+    NOT_ALLOWED = "METHOD_NOT_ALLOWED"
 }

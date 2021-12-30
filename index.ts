@@ -17,4 +17,4 @@ export {serve,setup} from './src/lib/swagger/index'
 export {MethodTypes} from './src/lib/swagger/swagger_http_types';
 
 // API validations and Documentation
-export {validator} from './src/lib/apiValidators'
+export {validator} from './src/lib/validator'

@@ -1,4 +1,4 @@
-import { ValidationArgs, ValidationErrArgs } from './ApiValidations'
+import { ValidationArgs, ValidationErrArgs } from './ApiValidation'
 
 export function queryValidator(querySchema : Array<ValidationArgs>, query:any)  : Array<ValidationErrArgs> | any {
     

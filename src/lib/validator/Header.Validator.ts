@@ -1,4 +1,4 @@
-import { ValidationArgs, ValidationErrArgs } from './ApiValidations'
+import { ValidationArgs, ValidationErrArgs } from './ApiValidation'
 
 export function headerValidator(headerSchema:Array<ValidationArgs>, header:any) : Array<ValidationErrArgs> | any {
     

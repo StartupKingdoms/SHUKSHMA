@@ -1,4 +1,4 @@
-import { ValidationArgs, ValidationErrArgs } from './ApiValidations'
+import { ValidationArgs, ValidationErrArgs } from './ApiValidation'
 
 export function bodyValidator(bodySchema:Array<ValidationArgs>, body:any) {
     

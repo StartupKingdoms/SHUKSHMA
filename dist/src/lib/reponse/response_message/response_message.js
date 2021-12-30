@@ -20,6 +20,8 @@ var RESPONSE_MESSAGE;
     RESPONSE_MESSAGE["BAD_REQUEST"] = "Bad Request";
     RESPONSE_MESSAGE["PAYMENT_ERROR"] = "Payment Unsuccesfull";
     RESPONSE_MESSAGE["UNCAUGHT_ERROR"] = "Uncaught Error";
+    RESPONSE_MESSAGE["FORBIDDEN"] = "Access forbidden";
+    RESPONSE_MESSAGE["NOT_ALLOWED"] = "METHOD_NOT_ALLOWED";
 })(RESPONSE_MESSAGE = exports.RESPONSE_MESSAGE || (exports.RESPONSE_MESSAGE = {}));
 ;
 //# sourceMappingURL=response_message.js.map

@@ -3,7 +3,7 @@ import * as path from 'path'
 import { RESPONSE_MESSAGE } from '../../reponse/response_message/response_message'
 
 
-export function Api_DocWriter(schema :any){
+export function ApiDocWriter(schema :any){
     
     const METHODS = {
         get:getWriter,

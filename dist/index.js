@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MethodTypes = exports.setup = exports.serve = exports.ApiPath = exports.SwaggerHttpMethod = exports.DEFUALT_TYPES = exports.STATUS_CODE = exports.RESPONSE_MESSAGE = exports.SimpleResponse = exports.BunyanLogger = exports.WinstonLogger = exports.RepositoryException = exports.PaymentFailedException = exports.NotFoundException = exports.InvalidCredentialException = exports.InternalServerException = exports.ForbiddenException = exports.EXCEPTION_TYPES = exports.ExceptionManager = exports.BadRequestException = exports.RabbitConnection = exports.MongoConnection = exports.RedisConnection = exports.Caching = exports.IocContainer = exports.AuthProvider = void 0;
+exports.validator = exports.MethodTypes = exports.setup = exports.serve = exports.ApiPath = exports.SwaggerHttpMethod = exports.DEFUALT_TYPES = exports.STATUS_CODE = exports.RESPONSE_MESSAGE = exports.SimpleResponse = exports.BunyanLogger = exports.WinstonLogger = exports.RepositoryException = exports.PaymentFailedException = exports.NotFoundException = exports.InvalidCredentialException = exports.InternalServerException = exports.ForbiddenException = exports.EXCEPTION_TYPES = exports.ExceptionManager = exports.BadRequestException = exports.RabbitConnection = exports.MongoConnection = exports.RedisConnection = exports.Caching = exports.IocContainer = exports.AuthProvider = void 0;
 var index_1 = require("./src/lib/auth/index");
 Object.defineProperty(exports, "AuthProvider", { enumerable: true, get: function () { return index_1.AuthProvider; } });
 var ioc_container_1 = require("./src/lib/IOC/ioc_container");
@@ -41,4 +41,7 @@ Object.defineProperty(exports, "serve", { enumerable: true, get: function () { r
 Object.defineProperty(exports, "setup", { enumerable: true, get: function () { return index_8.setup; } });
 var swagger_http_types_1 = require("./src/lib/swagger/swagger_http_types");
 Object.defineProperty(exports, "MethodTypes", { enumerable: true, get: function () { return swagger_http_types_1.MethodTypes; } });
+// API validations and Documentation
+var validator_1 = require("./src/lib/validator");
+Object.defineProperty(exports, "validator", { enumerable: true, get: function () { return validator_1.validator; } });
 //# sourceMappingURL=index.js.map

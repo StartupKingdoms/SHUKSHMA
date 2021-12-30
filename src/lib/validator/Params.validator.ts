@@ -1,4 +1,4 @@
-import { ValidationArgs, ValidationErrArgs } from './ApiValidations'
+import { ValidationArgs, ValidationErrArgs } from './ApiValidation'
 
 export function paramsValidator(paramSchema:Array<ValidationArgs>, params:any) : Array<ValidationErrArgs> | any {
     

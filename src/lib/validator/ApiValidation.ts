@@ -4,7 +4,7 @@ import {headerValidator} from './Header.Validator';
 import {paramsValidator} from './Params.validator';
 import {queryValidator} from './QueryParams.validator';
 import { BadRequestException } from '../exceptions';
-import {Api_DocWriter} from './documentation'
+import {ApiDocWriter} from './documentation'
 
 export interface ValidationErrArgs{
     keyError? : string;
@@ -41,8 +41,8 @@ export interface ErrorMessageObject{
  */
 export function validator(schema:ValueObject) {
 
-    Api_DocWriter(schema)
-    const metaSchema : Object = schema.meta || null
+    // ApiDocWriter(schema)
+    // const metaSchema : Object = schema.meta || null
     return function validator(
         target: any,
         key: string,
