@@ -5,6 +5,7 @@ import {paramsValidator} from './Params.validator';
 import {queryValidator} from './QueryParams.validator';
 import { BadRequestException } from '../exceptions';
 import {ApiDocWriter} from './documentation'
+import { iamValidator } from './Iam.validatior';
 
 export interface ValidationErrArgs{
     keyError? : string;
@@ -26,6 +27,8 @@ export interface ValueObject {
     header ?: Array<ValidationArgs>;
     params ?: Array<ValidationArgs>;
     queryParams ?: Array<ValidationArgs>;
+    auth?:Boolean;
+    policy?:string;
 }
 
 export interface ErrorMessageObject{
@@ -51,6 +54,12 @@ export function validator(schema:ValueObject) {
 
         const original = descriptor.value ;
         descriptor.value = function (req: Request, res: Response, next: NextFunction) {
+            const iamValidation : Boolean =schema.auth  && iamValidator(schema.policy,req.header)
+            if (iamValidation===false){
+                res.status(403).send("You are not autherised")
+                return original.call(this, req, res, next);
+
+            }
 
             const bodyValidation : Array<ValidationErrArgs>   = schema.body ? bodyValidator(schema.body, req.body) : null;
             const headerValidation : Array<ValidationErrArgs> = schema.header ?  headerValidator(schema.header, req.header) : null;
