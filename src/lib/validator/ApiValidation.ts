@@ -52,7 +52,7 @@ export function validator(schema:ValueObject) {
         const original = descriptor.value ;
         descriptor.value = function (req: Request, res: Response, next: NextFunction) {
 
-            const bodyValidation : Array<ValidationErrArgs>   = schema.body ? bodyValidator(schema.body, req.body) : null;
+            const bodyValidation : any   = schema.body ? bodyValidator(schema.body, req.body) : null;
             const headerValidation : Array<ValidationErrArgs> = schema.header ?  headerValidator(schema.header, req.header) : null;
             const paramsValidation : Array<ValidationErrArgs> = schema.params ?  paramsValidator(schema.params, req.params) : null;
             const queryValidation : Array<ValidationErrArgs>  = schema.queryParams ?  queryValidator(schema.queryParams, req.query) : null;
