@@ -22,7 +22,7 @@ export interface ValidationArgs {
 
 export interface ValueObject {
     meta ?: Object;
-    body  ?: Array<ValidationArgs>;
+    body  ?: any;
     header ?: Array<ValidationArgs>;
     params ?: Array<ValidationArgs>;
     queryParams ?: Array<ValidationArgs>;
