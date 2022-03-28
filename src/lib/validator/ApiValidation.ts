@@ -68,7 +68,7 @@ export function validator(schema:ValueObject) {
 }
 
 function errorMessage(
-    bodyValidation : Array<ValidationErrArgs>,
+    bodyValidation : any,
     headerValidation : Array<ValidationErrArgs>,
     paramsValidation : Array<ValidationErrArgs>, 
     queryValidation : Array<ValidationErrArgs>
@@ -76,8 +76,8 @@ function errorMessage(
     
     const message : ErrorMessageObject = {}
 
-    if (bodyValidation) {
-        message.bodyValidationError = bodyValidation ;
+    if (bodyValidation.error) {
+        message.bodyValidationError = bodyValidation.error.details[0].message;
     }
 
     if (headerValidation) {
