@@ -29,7 +29,7 @@ export interface ValueObject {
 }
 
 export interface ErrorMessageObject{
-    bodyValidationError ?: Array<ValidationErrArgs>;
+    bodyValidationError ?: any;
     headerValidationError ?: Array<ValidationErrArgs>;
     paramsValidationError ?: Array<ValidationErrArgs>;
     queryValidationError ?: Array<ValidationErrArgs>;
