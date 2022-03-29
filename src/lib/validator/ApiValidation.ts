@@ -23,14 +23,15 @@ export interface ValidationArgs {
 export interface ValueObject {
     meta ?: Object;
     body  ?: any;
-    header ?: Array<ValidationArgs>;
+    header ?: any;
     params ?: Array<ValidationArgs>;
     queryParams ?: Array<ValidationArgs>;
+    isRouteProtected ? : boolean
 }
 
 export interface ErrorMessageObject{
     bodyValidationError ?: any;
-    headerValidationError ?: Array<ValidationErrArgs>;
+    headerValidationError ?: any;
     paramsValidationError ?: Array<ValidationErrArgs>;
     queryValidationError ?: Array<ValidationErrArgs>;
 }
@@ -53,14 +54,13 @@ export function validator(schema:ValueObject) {
         descriptor.value = function (req: Request, res: Response, next: NextFunction) {
 
             const bodyValidation : any   = schema.body ? bodyValidator(schema.body, req.body) : null;
-            const headerValidation : Array<ValidationErrArgs> = schema.header ?  headerValidator(schema.header, req.header) : null;
+            const headerValidation : any = schema.isRouteProtected ?  headerValidator(schema.header, req) : null;
             const paramsValidation : Array<ValidationErrArgs> = schema.params ?  paramsValidator(schema.params, req.params) : null;
             const queryValidation : Array<ValidationErrArgs>  = schema.queryParams ?  queryValidator(schema.queryParams, req.query) : null;
 
             const message : ErrorMessageObject = errorMessage(bodyValidation, headerValidation, paramsValidation, queryValidation)
             if (message) {
                 res.status(400).send(message)
-                return original.call(this, req, res, next);
             }
             return original.call(this, req, res, next);
         }
@@ -69,7 +69,7 @@ export function validator(schema:ValueObject) {
 
 function errorMessage(
     bodyValidation : any,
-    headerValidation : Array<ValidationErrArgs>,
+    headerValidation : any,
     paramsValidation : Array<ValidationErrArgs>, 
     queryValidation : Array<ValidationErrArgs>
 ){
