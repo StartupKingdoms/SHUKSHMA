@@ -24,7 +24,7 @@ export interface ValueObject {
     meta ?: Object;
     body  ?: any;
     header ?: any;
-    params ?: Array<ValidationArgs>;
+    params ?: any;
     queryParams ?: Array<ValidationArgs>;
     isRouteProtected ? : boolean
 }
@@ -32,7 +32,7 @@ export interface ValueObject {
 export interface ErrorMessageObject{
     bodyValidationError ?: any;
     headerValidationError ?: any;
-    paramsValidationError ?: Array<ValidationErrArgs>;
+    paramsValidationError ?: any;
     queryValidationError ?: Array<ValidationErrArgs>;
 }
 
@@ -55,7 +55,7 @@ export function validator(schema:ValueObject) {
 
             const bodyValidation : any   = schema.body ? bodyValidator(schema.body, req.body) : null;
             const headerValidation : any = schema.isRouteProtected ?  headerValidator(schema.header, req) : null;
-            const paramsValidation : Array<ValidationErrArgs> = schema.params ?  paramsValidator(schema.params, req.params) : null;
+            const paramsValidation : any = schema.params ?  paramsValidator(schema.params, req.params) : null;
             const queryValidation : Array<ValidationErrArgs>  = schema.queryParams ?  queryValidator(schema.queryParams, req.query) : null;
 
             const message : ErrorMessageObject = errorMessage(bodyValidation, headerValidation, paramsValidation, queryValidation)
@@ -70,7 +70,7 @@ export function validator(schema:ValueObject) {
 function errorMessage(
     bodyValidation : any,
     headerValidation : any,
-    paramsValidation : Array<ValidationErrArgs>, 
+    paramsValidation : any, 
     queryValidation : Array<ValidationErrArgs>
 ){
     
@@ -84,7 +84,7 @@ function errorMessage(
         message.headerValidationError = headerValidation ;
     }
 
-    if (paramsValidation) {
+    if (paramsValidation.error) {
         message.paramsValidationError = paramsValidation ;
     }
 
