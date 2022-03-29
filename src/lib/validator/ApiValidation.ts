@@ -22,16 +22,17 @@ export interface ValidationArgs {
 
 export interface ValueObject {
     meta ?: Object;
-    body  ?: Array<ValidationArgs>;
-    header ?: Array<ValidationArgs>;
-    params ?: Array<ValidationArgs>;
+    body  ?: any;
+    header ?: any;
+    params ?: any;
     queryParams ?: Array<ValidationArgs>;
+    isRouteProtected ? : boolean
 }
 
 export interface ErrorMessageObject{
-    bodyValidationError ?: Array<ValidationErrArgs>;
-    headerValidationError ?: Array<ValidationErrArgs>;
-    paramsValidationError ?: Array<ValidationErrArgs>;
+    bodyValidationError ?: any;
+    headerValidationError ?: any;
+    paramsValidationError ?: any;
     queryValidationError ?: Array<ValidationErrArgs>;
 }
 
@@ -52,15 +53,14 @@ export function validator(schema:ValueObject) {
         const original = descriptor.value ;
         descriptor.value = function (req: Request, res: Response, next: NextFunction) {
 
-            const bodyValidation : Array<ValidationErrArgs>   = schema.body ? bodyValidator(schema.body, req.body) : null;
-            const headerValidation : Array<ValidationErrArgs> = schema.header ?  headerValidator(schema.header, req.header) : null;
-            const paramsValidation : Array<ValidationErrArgs> = schema.params ?  paramsValidator(schema.params, req.params) : null;
+            const bodyValidation : any   = schema.body ? bodyValidator(schema.body, req.body) : null;
+            const headerValidation : any = schema.isRouteProtected ?  headerValidator(schema.header, req) : null;
+            const paramsValidation : any = schema.params ?  paramsValidator(schema.params, req.params) : null;
             const queryValidation : Array<ValidationErrArgs>  = schema.queryParams ?  queryValidator(schema.queryParams, req.query) : null;
 
             const message : ErrorMessageObject = errorMessage(bodyValidation, headerValidation, paramsValidation, queryValidation)
             if (message) {
                 res.status(400).send(message)
-                return original.call(this, req, res, next);
             }
             return original.call(this, req, res, next);
         }
@@ -68,23 +68,23 @@ export function validator(schema:ValueObject) {
 }
 
 function errorMessage(
-    bodyValidation : Array<ValidationErrArgs>,
-    headerValidation : Array<ValidationErrArgs>,
-    paramsValidation : Array<ValidationErrArgs>, 
+    bodyValidation : any,
+    headerValidation : any,
+    paramsValidation : any, 
     queryValidation : Array<ValidationErrArgs>
 ){
     
     const message : ErrorMessageObject = {}
 
-    if (bodyValidation) {
-        message.bodyValidationError = bodyValidation ;
+    if (bodyValidation.error) {
+        message.bodyValidationError = bodyValidation.error.details[0].message;
     }
 
     if (headerValidation) {
         message.headerValidationError = headerValidation ;
     }
 
-    if (paramsValidation) {
+    if (paramsValidation.error) {
         message.paramsValidationError = paramsValidation ;
     }
 
