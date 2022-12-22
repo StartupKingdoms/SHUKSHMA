@@ -39,7 +39,7 @@
     "inversify": "^6.0.1",
     "inversify-express-utils": "^6.4.3",
     "joi": "^17.6.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.0.13",
     "redis": "^3.0.2",
     "swagger-ui-dist": "^4.1.0"
